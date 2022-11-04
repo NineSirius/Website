@@ -1,4 +1,77 @@
+.hamburger {
+  display: none !important;
+  z-index: 12;
+  
+  @include _530px {
+    display: inline-flex !important;
+  }
+}
+
 .container-nav {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+
+  .nav-logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+
+    & b {
+      color: var(--dark-color);
+    }
+  }
+
+  .nav {
+    display: flex;
+    gap: 10px;
+
+    @include _530px {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 75vw;
+      height: 100vh;  
+      padding: 25px 10px;
+      transform: translateX(100%);
+      transition: .2s;
+      background: #FFFFFF;
+      z-index: 11;
+
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+
+      &.is-active {
+        transform: translateX(0);
+      }
+
+      &-link {
+        font-weight: 500;
+        letter-spacing: 120%;
+      }
+    }
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(#000, 0.6);
+  opacity: 0;
+  visibility: hidden;
+  z-index: 10;
+
+  &.is-active {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.noscroll {
+  overflow: hidden;
 }
